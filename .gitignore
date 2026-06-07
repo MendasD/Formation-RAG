@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.python-version
+
+# Secrets
+# ne commit aucun .env, même dans les sous dossiers
+seance*/.env
+.env
+
+# Documentation
+mesDocs/
+
+seance3/

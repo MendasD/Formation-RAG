@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.python-version
+
+# Secrets
+.env
+
+# Données
+data/pdfs/*.pdf
+data/pdfs/*.PDF
+!data/pdfs/.gitkeep
+
+# Base vectorielle persistée
+chroma_db/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
