@@ -1,0 +1,25 @@
+# Configuration Streamlit — Formation RAG
+# Documentation : https://docs.streamlit.io/library/advanced-features/configuration
+
+[theme]
+# Pas de forçage : Streamlit suit le thème système (light/dark auto).
+# On définit juste la couleur primaire pour la cohérence avec la palette du cours.
+primaryColor = "#1747aa"
+
+[browser]
+# Désactive la télémétrie Streamlit (page de demande d'email au 1er lancement).
+gatherUsageStats = false
+
+[server]
+# Évite le rechargement intempestif quand un fichier change pendant la démo.
+runOnSave = false
+# Désactive le watcher de fichiers Streamlit. Sans cette ligne, Streamlit scanne
+# TOUS les modules Python importés à chaque rerun pour surveiller leurs changements.
+# Comme `transformers` contient des sous-modules d'image qui requièrent `torchvision`
+# (que nous n'avons pas, et dont nous n'avons pas besoin pour notre RAG textuel),
+# le scan déclenche des ModuleNotFoundError qui pourrissent l'app voire la coupent.
+# → on désactive complètement le watcher : pas de hot reload, mais aucun parasitage.
+fileWatcherType = "none"
+
+[logger]
+level = "info"

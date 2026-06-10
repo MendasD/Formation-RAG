@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.python-version
+
+# Secrets
+.env
+
+# Données
+data/pdfs/*.pdf
+data/pdfs/*.PDF
+!data/pdfs/.gitkeep
+
+# Base vectorielle persistée
+chroma_db/
+
+# Résultats d'évaluation
+evaluation/results/*.csv
+evaluation/results/*.html
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db

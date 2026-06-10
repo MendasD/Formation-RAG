@@ -1,0 +1,110 @@
+{
+  "name": "cours_rag_theorie_v1",
+  "questions": [
+    {
+      "id": "q01",
+      "question": "Qu'est-ce qu'un Large Language Model (LLM) ?",
+      "ground_truth": "Un Large Language Model est un modèle de Deep Learning entraîné sur d'immenses corpus de texte, capable de comprendre et générer du langage naturel en prédisant le mot suivant le plus probable.",
+      "relevant_pages": [8, 9],
+      "category": "definition"
+    },
+    {
+      "id": "q02",
+      "question": "Qu'est-ce qu'un embedding et à quoi sert-il ?",
+      "ground_truth": "Un embedding est une représentation vectorielle (liste de nombres réels) d'un mot, d'une phrase ou d'un document. Des contenus sémantiquement proches ont des vecteurs proches dans cet espace, ce qui permet la recherche par similarité.",
+      "relevant_pages": [9, 14],
+      "category": "definition"
+    },
+    {
+      "id": "q03",
+      "question": "Quelles sont les 6 limites majeures des LLM identifiées dans le cours ?",
+      "ground_truth": "Les 6 limites majeures sont : (1) les hallucinations, (2) le knowledge cutoff, (3) l'absence d'accès aux données privées, (4) l'absence de sources/traçabilité, (5) la fenêtre de contexte limitée, et (6) le coût et la lourdeur du fine-tuning.",
+      "relevant_pages": [10, 11, 12],
+      "category": "list"
+    },
+    {
+      "id": "q04",
+      "question": "Quelle est la différence entre fine-tuning et RAG ?",
+      "ground_truth": "Le fine-tuning réentraîne partiellement un LLM sur un jeu de données spécifique pour spécialiser son comportement ou son style. Le RAG, lui, récupère dynamiquement des documents pertinents au moment de la requête et les fournit au LLM comme contexte. Le fine-tuning est adapté pour le style, le RAG pour la connaissance factuelle changeante.",
+      "relevant_pages": [12, 13],
+      "category": "comparison"
+    },
+    {
+      "id": "q05",
+      "question": "Quelles sont les deux phases d'un système RAG ?",
+      "ground_truth": "Un RAG fonctionne en deux phases distinctes : (1) l'indexation (offline) qui prépare la base de connaissances en chargeant les documents, les découpant en chunks, les vectorisant et les stockant dans un vector store ; (2) le retrieval + génération (online) qui à chaque question vectorise la requête, récupère les top-k chunks, construit un prompt augmenté et demande au LLM de répondre.",
+      "relevant_pages": [14, 15, 16],
+      "category": "explanation"
+    },
+    {
+      "id": "q06",
+      "question": "Qu'est-ce que le chunking et pourquoi est-il nécessaire ?",
+      "ground_truth": "Le chunking est l'opération qui consiste à découper chaque document en passages plus petits (chunks). Il est nécessaire pour trois raisons : permettre une recherche précise (trouver le bon paragraphe et non le bon livre), respecter la fenêtre de contexte du LLM, et améliorer la qualité des embeddings (un vecteur représente mieux un paragraphe qu'un livre).",
+      "relevant_pages": [15],
+      "category": "explanation"
+    },
+    {
+      "id": "q07",
+      "question": "Quels sont les différents types de RAG mentionnés dans le cours ?",
+      "ground_truth": "Le cours mentionne : Naive RAG, Advanced RAG (avec pré-retrieval et post-retrieval), Modular RAG, Agentic RAG, Self-RAG, Corrective RAG (CRAG), GraphRAG, HyDE et Multi-modal RAG.",
+      "relevant_pages": [19, 20, 21, 22],
+      "category": "list"
+    },
+    {
+      "id": "q08",
+      "question": "Qu'est-ce que HyDE ?",
+      "ground_truth": "HyDE (Hypothetical Document Embeddings) est une technique de pré-retrieval qui consiste à générer une réponse hypothétique à la question via un LLM, puis à embedder cette réponse hypothétique plutôt que la question elle-même. La réponse hypothétique est souvent sémantiquement plus proche des bons chunks que la question.",
+      "relevant_pages": [20, 21],
+      "category": "definition"
+    },
+    {
+      "id": "q09",
+      "question": "Quel est l'apport du re-ranking dans un système RAG ?",
+      "ground_truth": "Le re-ranking est une étape post-retrieval qui consiste à trier les chunks récupérés avec un modèle plus précis (cross-encoder type Cohere Rerank ou BGE Reranker). Il améliore la pertinence du contexte fourni au LLM en réordonnant les chunks selon leur véritable pertinence pour la question.",
+      "relevant_pages": [20],
+      "category": "explanation"
+    },
+    {
+      "id": "q10",
+      "question": "Quelles sont les principales métriques pour évaluer un RAG selon RAGAS ?",
+      "ground_truth": "Les principales métriques RAGAS sont : Faithfulness (la réponse est-elle fidèle au contexte récupéré, anti-hallucination), Answer Relevancy (la réponse répond-elle à la question), Context Precision (les chunks récupérés sont-ils pertinents) et Context Recall (a-t-on récupéré tous les chunks pertinents).",
+      "relevant_pages": [23, 24],
+      "category": "list"
+    },
+    {
+      "id": "q11",
+      "question": "Quels sont les pièges classiques à éviter lors de la mise en place d'un RAG ?",
+      "ground_truth": "Les pièges classiques incluent : des chunks trop grands ou trop petits, l'absence de chunk overlap, un mauvais modèle d'embedding (par exemple anglais sur du contenu français), l'absence de métadonnées, un prompt système trop laxiste, un top-k trop bas, l'absence d'évaluation, et des données sales (obsolètes, dupliquées, contradictoires).",
+      "relevant_pages": [25],
+      "category": "list"
+    },
+    {
+      "id": "q12",
+      "question": "Quels sont les cas d'usage typiques d'un système RAG en entreprise ?",
+      "ground_truth": "Les cas d'usage typiques sont : les assistants documentaires d'entreprise, le support client automatisé, les assistants juridiques, les assistants médicaux (sous supervision humaine), les assistants techniques/DevOps, les tuteurs éducatifs, et la recherche académique ou la veille.",
+      "relevant_pages": [26],
+      "category": "list"
+    },
+    {
+      "id": "q13",
+      "question": "Quel framework d'orchestration sera utilisé dans les séances pratiques ?",
+      "ground_truth": "LangChain sera utilisé en travaux pratiques car il est aujourd'hui le framework leader, avec un écosystème très riche et une large communauté.",
+      "relevant_pages": [18, 27],
+      "category": "fact"
+    },
+    {
+      "id": "q14",
+      "question": "Quelle est la capitale de l'Australie ?",
+      "ground_truth": "Je n'ai pas trouvé cette information dans le document.",
+      "relevant_pages": [],
+      "category": "out_of_scope"
+    },
+    {
+      "id": "q15",
+      "question": "Pourquoi le RAG est-il une réponse pragmatique aux limites des LLM ?",
+      "ground_truth": "Le RAG répond aux 6 limites des LLM : il réduit les hallucinations en ancrant la réponse dans des documents, contourne le knowledge cutoff en injectant du contenu à jour, permet d'accéder aux données privées par recherche dans la base interne, fournit des sources traçables, gère le contexte limité en n'envoyant que les passages utiles, et reste plus léger et réactif que le fine-tuning.",
+      "relevant_pages": [12],
+      "category": "explanation"
+    }
+  ]
+}
